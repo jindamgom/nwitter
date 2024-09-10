@@ -1,4 +1,7 @@
 import firebase from "firebase/compat/app";
+// import "firebase/auth";
+// fb 9 이상에서 다른 방식으로 임포트하고 사용해야한다..
+import "firebase/compat/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -9,4 +12,7 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+export const firebaseInstance = firebase;
+export const authService = firebase.auth();
+// export default firebase.initializeApp(firebaseConfig);
