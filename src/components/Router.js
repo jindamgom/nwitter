@@ -5,7 +5,7 @@ import Profile from "routes/Profile";
 import Navigation from "./Navigation";
 
 // 상위 컴포넌트에서 받은 프롭스를 구조분해 할당으로 사용한다. 
-const AppRouter = ({isLoggedIn}) =>
+const AppRouter = ({isLoggedIn,userObj}) =>
 {
     return(
         <Router>
@@ -13,7 +13,8 @@ const AppRouter = ({isLoggedIn}) =>
                 <Routes>
         {isLoggedIn ? (
           <>
-          <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/" element={<Home userObj={userObj}/>}>
+            </Route>
           <Route exact path="/profile" element={<Profile />}></Route>
           </>    
         ) : (
