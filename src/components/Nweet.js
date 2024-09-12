@@ -1,4 +1,6 @@
 import { dbService,storageService } from "fbase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash,faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Nweet = ({nweetObj,isOwner})=>{
     const onDeleteClick = async() =>{
@@ -17,17 +19,19 @@ const Nweet = ({nweetObj,isOwner})=>{
     }
 
     return(
-        <div>
+        <div className="nweet">
+            
             <h4>{nweetObj.text}</h4>
             {nweetObj.attachmentUrl && (
                 <img src={nweetObj.attachmentUrl} width="100px" height="100px"/>
             )}
             {isOwner &&(
-                <>
-                <button onClick={onDeleteClick}>삭제</button>
-                </>
-            )
-            }
+                <div className="nweet__actions">
+                    <span onClick={onDeleteClick}>
+                        <FontAwesomeIcon icon={faTrash}/>
+                    </span>
+                </div>          
+            )}
         </div>
     );
 };
